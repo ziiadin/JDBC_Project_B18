@@ -1,5 +1,7 @@
 package com.cybertek.jdbc.day2;
 
+import com.cybertek.jdbc.utility.ConfigurationReader;
+
 import java.sql.*;
 import java.util.*;
 
@@ -16,9 +18,9 @@ public class DB_Utility {
      * */
     public static void createConnection() {
 
-        String connectionStr = "jdbc:oracle:thin:@52.71.242.164:1521:XE";
-        String username = "hr";
-        String password = "hr";
+        String connectionStr = ConfigurationReader.getProperty("qa1.database.url");
+        String username = ConfigurationReader.getProperty("qa1.database.username");
+        String password = ConfigurationReader.getProperty("qa1.database.password");
 
         try {
             conn = DriverManager.getConnection(connectionStr, username, password);
